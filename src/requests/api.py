@@ -72,6 +72,8 @@ def get(url, params=None, **kwargs):
 
     return request("get", url, params=params, **kwargs)
 
+def send(url, **kwargs):
+    return request("send", url, **kwargs)
 
 def options(url, **kwargs):
     r"""Sends an OPTIONS request.
