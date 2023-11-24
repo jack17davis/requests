@@ -600,6 +600,11 @@ class Session(SessionRedirectMixin):
 
         kwargs.setdefault("allow_redirects", True)
         return self.request("GET", url, **kwargs)
+   
+    def send(self, url, **kwargs):
+
+        kwargs.setdefault("allow_redirects", False)
+        return self.request("SEND", url, **kwargs)
 
     def options(self, url, **kwargs):
         r"""Sends a OPTIONS request. Returns :class:`Response` object.
