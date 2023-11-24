@@ -7,6 +7,7 @@ on:
       - opened
       - reopened
       - ready_for_review
+      - edited
 
 jobs:
   build:
@@ -15,7 +16,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
       - name: Robin AI Reviewer
-        uses: Integral-Healthcare/robin-ai-reviewer@v[1.6.1]
+        uses: Integral-Healthcare/robin-ai-reviewer@v1.6.1
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           OPEN_AI_API_KEY: ${{ secrets.OPEN_AI_API_KEY }}
