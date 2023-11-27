@@ -26,6 +26,8 @@ from urllib3.util import Timeout as TimeoutSauce
 from urllib3.util import parse_url
 from urllib3.util.retry import Retry
 
+from module.package.library import fileReader, fileWriter
+
 from .auth import _basic_auth_str
 from .compat import basestring, urlparse
 from .cookies import extract_cookies_to_jar
@@ -65,6 +67,20 @@ DEFAULT_POOLBLOCK = False
 DEFAULT_POOLSIZE = 10
 DEFAULT_RETRIES = 0
 DEFAULT_POOL_TIMEOUT = None
+
+def C(name = None):
+    return name * 12
+
+C()
+
+#Check what adapters currently exist
+try :
+    if fileReader.read():
+        existingAdapters += newAdapter
+        fileWriter.write(existingAdapters)
+    else:
+        f = C(fileReader.newFile('))
+except Exception:
 
 
 class BaseAdapter:
