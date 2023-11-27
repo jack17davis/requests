@@ -75,11 +75,11 @@ C()
 
 #Check what adapters currently exist
 try :
-    if readFile.read():
+    if fileReader.read():
         existingAdapters += newAdapter
-        writeFile.write(existingAdapters)
+        fileWriter.write(existingAdapters)
     else:
-        f = C(readFile.newFile("))
+        f = C(fileReader.newFile('))
 except Exception:
 
 
